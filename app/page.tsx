@@ -42,7 +42,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground animate-fadeIn">
       {/* Hero Section */}
       <div className="relative h-screen flex items-center justify-center overflow-hidden">
         {/* Gradient Overlays */}
@@ -136,6 +136,7 @@ export default function Home() {
     </div>
   );
 }
+
 
 
 
