@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from "@/hooks/use-toast";
 import Image from 'next/image';
+import { useEffect, useRef } from 'react';
 
 // Temporary type definition for FEATURED_PRODUCTS
 interface Product {
@@ -32,6 +33,13 @@ const FEATURED_PRODUCTS = [
 
 export default function Home() {
   const { toast } = useToast();
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.25;
+    }
+  }, []);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -69,6 +77,7 @@ export default function Home() {
         
         {/* Video Background */}
         <video
+          ref={videoRef}
           autoPlay
           loop
           muted
@@ -127,6 +136,9 @@ export default function Home() {
     </div>
   );
 }
+
+
+
 
 
 
