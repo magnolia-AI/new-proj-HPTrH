@@ -2,203 +2,63 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-  TEMPLATE NOTE:
-  These are template color variables. Feel free to:
-  - Change any color values
-  - Add new variables
-  - Use a different color scheme entirely
-  - Modify the dark mode theme
-*/
-
 @layer base {
   :root {
-    --background: 210 10% 95%;
-    --foreground: 220 20% 10%;
+    /* Premium Espresso Martini Theme */
+    --background: 30 15% 8%; /* Deep espresso brown */
+    --foreground: 45 50% 92%; /* Creamy vanilla */
     
-    --card: 210 10% 98%;
-    --card-foreground: 220 20% 30%;
+    --card: 30 18% 10%; /* Slightly lighter brown */
+    --card-foreground: 45 50% 92%;
     
-    --popover: 210 10% 98%;
-    --popover-foreground: 220 20% 30%;
+    --popover: 30 18% 10%;
+    --popover-foreground: 45 50% 92%;
     
-    --primary: 40 90% 50%;
-    --primary-foreground: 210 20% 98%;
+    --primary: 45 70% 50%; /* Gold accent */
+    --primary-foreground: 30 15% 8%;
     
-    --secondary: 210 20% 90%;
-    --secondary-foreground: 210 20% 30%;
+    --secondary: 30 25% 15%; /* Medium brown */
+    --secondary-foreground: 45 50% 92%;
     
-    --muted: 210 20% 90%;
-    --muted-foreground: 210 20% 40%;
+    --muted: 30 20% 20%;
+    --muted-foreground: 45 30% 70%;
     
-    --accent: 210 20% 90%;
-    --accent-foreground: 210 20% 30%;
+    --accent: 45 60% 40%; /* Darker gold */
+    --accent-foreground: 45 50% 92%;
     
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 70% 40%;
+    --destructive-foreground: 0 0% 100%;
     
-    --border: 210 20% 80%;
-    --input: 210 20% 80%;
-    --ring: 220 20% 50%;
+    --border: 30 15% 25%;
+    --input: 30 15% 25%;
+    --ring: 45 70% 50%; /* Gold focus ring */
     
-    --radius: 0.75rem;
-    
-    --sidebar-background: 210 10% 90%;
-    
-    --sidebar-foreground: 220 20% 30%;
-    
-    --sidebar-primary: 220 20% 40%;
-    
-    /* Espresso Martini brand colors */
-    --brand-yellow: 45 90% 55%;
-    --brand-yellow-dark: 45 90% 50%;
-    --brand-black: 220 20% 10%;
-    --brand-gold: 40 70% 50%;
-    --brand-beige: 30 20% 95%;
-    --brand-brown: 20 40% 30%;
-    
-    /* Font settings */
-    --font-family-primary: 'Montserrat', sans-serif;
-    --font-family-secondary: 'Lora', serif;
-    --font-size-base: 1rem;
-    --line-height-base: 1.5;
+    --radius: 0.5rem;
   }
 }
 
-/* Modern styling for the website */
-body {
-  font-family: var(--font-family-primary);
-  color: hsl(var(--foreground));
-  background-color: hsl(var(--background));
-  line-height: var(--line-height-base);
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-family-primary);
-  color: hsl(var(--brand-black));
-}
-
-p {
-  font-size: var(--font-size-base);
-  line-height: var(--line-height-base);
-  color: hsl(var(--foreground));
-}
-
-/* Container styling */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-/* Button hover effects */
-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-/* Card component styling */
-.card {
-  background-color: hsl(var(--card));
-  color: hsl(var(--card-foreground));
-  border-radius: var(--radius);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Modern input fields */
-input, textarea {
-  border-radius: var(--radius);
-  border: 1px solid hsl(var(--border));
-  background-color: hsl(var(--input));
-  color: hsl(var(--foreground));
-  padding: 0.5rem 1rem;
-  font-size: var(--font-size-base);
-}
-
-/* Responsive typography */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2rem;
+@layer base {
+  * {
+    @apply border-border;
   }
-  p {
-    font-size: 0.9rem;
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
-/* Modern link styling */
-a {
-  color: hsl(var(--primary));
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-a:hover {
-  color: hsl(var(--primary-foreground));
+/* Smooth animations */
+.animate-in {
+  animation: animateIn 0.3s ease-out forwards;
 }
 
-/* Smooth transitions */
-.transition {
-  transition: all 0.3s ease;
+@keyframes animateIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-
-/* Utility classes */
-.text-center {
-  text-align: center;
-}
-. text-2xl {
-  font-size: 1.5rem;
-}
-.font-bold {
-  font-weight: 700;
-}
-.mb-6 {
-  margin-bottom: 1.5rem;
-}
-.flex {
-  display: flex;
-}
-.items-center {
-  align-items: center;
-}
-.justify-center {
-  justify-content: center;
-}
-.flex-col {
-  flex-direction: column;
-}
-.space-y-4 > * + * {
-  margin-top: 1rem;
-}
-.w-full {
-  width: 100%;
-}
-.max-w-md {
-  max-width: 20rem;
-}
-.p-6 {
-  padding: 1.5rem;
-}
-.bg-yellow-500 {
-  background-color: hsl(var(--brand-yellow));
-}
-.bg-yellow-600:hover {
-  background-color: hsl(var(--brand-yellow-dark));
-}
-.text-white {
-  color: #ffffff;
-}
-.min-h-screen {
-  min-height: 100vh;
-}
-.flex {
-  display: flex;
-}
-.items-center {
-  align-items: center;
-}
-.justify-center {
-  justify-content: center;
-}
-.bg-gray-100 {
-  background-color: #f7fafc;
-}
-
