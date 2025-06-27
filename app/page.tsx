@@ -6,6 +6,7 @@ import { useToast } from "@/hooks/use-toast";
 import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 
+const handleTimeUpdate = () => { if (videoRef.current && videoRef.current.currentTime > 0) { videoRef.current.classList.remove('opacity-0'); videoRef.current.classList.add('opacity-100'); } };
 // Temporary type definition for FEATURED_PRODUCTS
 interface Product {
   name: string;
