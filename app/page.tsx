@@ -36,6 +36,17 @@ export default function Home() {
   const { toast } = useToast();
   const videoRef = useRef<HTMLVideoElement>(null);
 
+
+  const handleTimeUpdate = () => {
+    if (videoRef.current) {
+      if (videoRef.current.currentTime > 0) {
+        videoRef.current.classList.remove('opacity-0');
+        videoRef.current.classList.add('opacity-100');
+      }
+      videoRef.current.playbackRate = 0.75;
+    }
+  };
+
   
 
   return (
