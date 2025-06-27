@@ -82,7 +82,8 @@ export default function Home() {
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
+          onTimeUpdate={handleTimeUpdate}
         >
           <source src="https://storage.googleapis.com/magnolia-storage-dev-test-123/videos/2fpfxEwQCc/video.mp4" type="video/mp4" />
         </video>
@@ -136,6 +137,7 @@ export default function Home() {
     </div>
   );
 }
+
 
 
 
