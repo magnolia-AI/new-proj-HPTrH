@@ -37,17 +37,6 @@ export default function Home() {
     <div className="min-h-screen bg-background text-foreground">
       {/* Hero Section */}
       <div className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Video Background */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="https://storage.googleapis.com/magnolia-storage-dev-test-123/videos/2fpfxEwQCc/video.mp4" type="video/mp4" />
-        </video>
-
         {/* Gradient Overlays */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background z-10" />
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-background/80 to-background z-10" />
@@ -78,16 +67,16 @@ export default function Home() {
           </div>
         </div>
         
-        {/* Background image placeholder - will be replaced with actual product image */}
-        <div className="absolute inset-0">
-          <Image
-            src="https://storage.googleapis.com/magnolia-storage-dev-test-123/images/mtTFxA65f9/image.jpg"
-            alt="Premium Espresso Martini"
-            fill
-            style={{ objectFit: 'cover' }}
-            priority
-          />
-        </div>
+        {/* Video Background */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="https://storage.googleapis.com/magnolia-storage-dev-test-123/videos/2fpfxEwQCc/video.mp4" type="video/mp4" />
+        </video>
       </div>
       
       {/* Featured Products */}
