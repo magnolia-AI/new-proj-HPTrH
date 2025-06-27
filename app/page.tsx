@@ -4,6 +4,8 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from "@/hooks/use-toast";
 import Image from 'next/image';
+import { useEffect, useRef } from 'react';
+
 
 // Temporary type definition for FEATURED_PRODUCTS
 interface Product {
@@ -32,25 +34,28 @@ const FEATURED_PRODUCTS = [
 
 export default function Home() {
   const { toast } = useToast();
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+
+  const handleTimeUpdate = () => {
+    if (videoRef.current) {
+      if (videoRef.current.currentTime > 0) {
+        videoRef.current.classList.remove('opacity-0');
+        videoRef.current.classList.add('opacity-100');
+      }
+      videoRef.current.playbackRate = 0.75;
+    }
+  };
+
+  
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground animate-fadeIn">
       {/* Hero Section */}
       <div className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Video Background */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="https://storage.googleapis.com/magnolia-storage-dev-test-123/videos/2fpfxEwQCc/video.mp4" type="video/mp4" />
-        </video>
-
         {/* Gradient Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background z-10" />
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-background/80 to-background z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/90 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-background/50 to-background/80 z-10" />
         
         <div className="relative z-20 text-center px-4 max-w-4xl">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight animate-in">
@@ -78,16 +83,18 @@ export default function Home() {
           </div>
         </div>
         
-        {/* Background image placeholder - will be replaced with actual product image */}
-        <div className="absolute inset-0">
-          <Image
-            src="https://storage.googleapis.com/magnolia-storage-dev-test-123/images/mtTFxA65f9/image.jpg"
-            alt="Premium Espresso Martini"
-            fill
-            style={{ objectFit: 'cover' }}
-            priority
-          />
-        </div>
+        {/* Video Background */}
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0"
+          onTimeUpdate={handleTimeUpdate}
+        >
+          <source src="https://storage.googleapis.com/magnolia-storage-dev-test-123/videos/2fpfxEwQCc/video.mp4" type="video/mp4" />
+        </video>
       </div>
       
       {/* Featured Products */}
@@ -138,6 +145,17 @@ export default function Home() {
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
